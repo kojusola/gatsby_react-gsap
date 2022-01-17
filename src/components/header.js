@@ -1,42 +1,48 @@
 import * as React from "react"
-import PropTypes from "prop-types"
-import { Link } from "gatsby"
+import Menu from "../images/menu.svg"
+import { Timeline, Tween } from "react-gsap"
+// import PropTypes from "prop-types"
+// import { Link } from "gatsby"
 
-const Header = ({ siteTitle }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
+function Header() {
+  // useLayoutEffect(() => {
+  //   navAnim(".nav")
+  // })
+  return (
+    <header>
+      <nav>
+        <Tween
+          from={{ y: -200, opacity: 0 }}
+          to={{ y: 0, opacity: 1 }}
+          stagger={0.25}
+          delay={3}
         >
-          {siteTitle}
-        </Link>
-      </h1>
-    </div>
-  </header>
-)
-
-Header.propTypes = {
-  siteTitle: PropTypes.string,
-}
-
-Header.defaultProps = {
-  siteTitle: ``,
+          <h1 className="nav">
+            COR
+            <span>e</span>
+          </h1>
+          <div className="menu">
+            {/* <Tween
+              from={{ y: -100, opacity: 0 }}
+              to={{ y: 0, opacity: 1 }}
+              stagger={0.1}
+            > */}
+            <img className="nav" src={Menu} alt="menu_icon" />
+            <p className="nav">find your fit</p>
+            {/* </Tween> */}
+          </div>
+          <div>
+            <a className="nav" href="/">
+              account
+            </a>
+            <a className="nav" href="/">
+              cart (0)
+            </a>
+          </div>
+        </Tween>
+      </nav>
+    </header>
+  )
 }
 
 export default Header
